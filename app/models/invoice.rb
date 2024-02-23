@@ -5,7 +5,13 @@ class Invoice < ApplicationRecord
   has_many :items, through: :invoice_items
 
   validates :status, presence: true
-
+  
+  enum status: {
+    in_progress: 0,
+    cancelled: 1,
+    completed: 2
+  }
+  
   def formatted_created_at
     created_at.strftime('%A, %B %d, %Y')
   end

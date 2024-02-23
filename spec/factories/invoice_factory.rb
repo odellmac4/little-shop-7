@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :invoice do
-    status { "success" }
+    status { "completed" }
     customer
   end
 
-  factory :failed_invoice do
-    status { "failed" }
+  factory :cancelled_invoice do
+    status { "cancelled" }
     customer
   end
 end
