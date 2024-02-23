@@ -6,7 +6,7 @@ RSpec.describe 'Admin Invoices Show Page' do
             @nico = Customer.create!(first_name: "Nico", last_name: "Shantii")
             @wolf = Customer.create!(first_name: "Wolf", last_name: "Goode")
             @invoice_1 = Invoice.create!(status: "Not Paid", customer_id: @nico.id)
-            @invoice_2 = Invoice.create!(status: "Paid", customer_id: @nico.id)
+            @invoice_2 = Invoice.create!(status: "Paid", customer_id: @wolf.id)
         end
 
         it 'shows invoice info - invoice id, status, invoice created_at date (Week-Day, Month dd, yyyy), customer first and last name' do
