@@ -78,4 +78,6 @@ RSpec.describe Merchant, type: :model do
       expect(top_items.length).to eq(5)
     end
   end
+
+  
 end
