@@ -61,27 +61,6 @@ RSpec.describe Merchant, type: :model do
 
   describe '#calculate_top_items' do
     it 'returns the top 5 items by revenue' do
-      merchant = create(:merchant) 
-
-      
-      items = create_list(:item, 10, merchant: merchant) 
-      items.each do |item|
-        invoice = create(:invoice)
-        transaction = create(:transaction, invoice: invoice, result: 'success')
-        create(:invoice_item, item: item, invoice: invoice, quantity: 2, unit_price: 10)
-      end
-      
-      top_items = merchant.calculate_top_items
-      
-      expect(top_items.length).to eq(5)
-      expect(top_items.first).to be_a(Item)
-      expect(top_items.first.total_revenue).to be >= top_items.last.total_revenue 
-      
-    end
-  end
-
-  describe '#calculate_top_items' do
-    it 'returns the top 5 items by revenue' do
       merchant = create(:merchant)
 
       # create 10 items for the merchant

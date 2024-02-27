@@ -35,4 +35,10 @@ RSpec.describe 'Admin merchants index' do
             # And I see the name of that merchant
         end
     end
+
+    describe 'User story 31' do
+        it 'displays top 5 merchants by revenue with date for most merchant' do
+            
+        end
+    end
 end
