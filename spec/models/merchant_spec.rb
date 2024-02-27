@@ -10,10 +10,6 @@ RSpec.describe Merchant, type: :model do
     it { should have_many(:invoice_items).through(:items) }
   end
 
-#   describe "validations" do
-#     it { should validate_presence_of(:name) }
-#   end
-
   describe "#top_customers" do
     let(:merchant) { FactoryBot.create(:merchant) }
     let(:item) { FactoryBot.create(:item, merchant: merchant) }
@@ -62,22 +58,48 @@ RSpec.describe Merchant, type: :model do
   describe '#calculate_top_items' do
     it 'returns the top 5 items by revenue' do
       merchant = create(:merchant)
-
-      # create 10 items for the merchant
-      items = create_list(:item, 10, merchant: merchant)
-
-      # create invoices and invoice items with successful transactions
-      items.each do |item|
+      
+      # Create 10 items for the merchant
+      create_list(:item, 10, merchant: merchant)
+      
+      # Create invoices and invoice items with successful transactions
+      merchant.items.each do |item|
         invoice = create(:invoice)
-        transaction = create(:transaction, result: 'success', invoice: invoice)
+        create(:transaction, result: 'success', invoice: invoice)
         create(:invoice_item, item: item, invoice: invoice, quantity: 2, unit_price: 10)
       end
-
+      
       top_items = merchant.calculate_top_items
-
+      
       expect(top_items.length).to eq(5)
     end
   end
 
-  
+  describe '#merchant_best_day_by_revenue' do
+    it 'returns the top selling date and merchant for each of the top 5 merchants by revenue' do
+      # create 10 merchants
+      merchants = create_list(:merchant, 10)
+
+      # create 20 invoices with associated items for each merchant
+      merchants.each do |merchant|
+        20.times do
+          invoice = create(:invoice)
+          item = create(:item, merchant: merchant)
+          create(:invoice_item, invoice: invoice, item: item)
+        end
+      end
+
+      top_merchants = Merchant.merchant_best_day_by_revenue
+
+      expect(top_merchants.length).to eq(5)
+
+      # the - sign checks for sorting in descending order
+      expected_order = top_merchants.sort_by { |merchant| -merchant.total_revenue }
+
+      # check if the top merchants are in the expected order
+      top_merchants.each_with_index do |merchant, index|
+        expect(merchant).to eq(expected_order[index])
+      end
+    end
+  end
 end
