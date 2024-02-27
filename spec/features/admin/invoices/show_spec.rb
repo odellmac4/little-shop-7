@@ -73,7 +73,6 @@ RSpec.describe 'Admin invoice show page' do
     
         it 'has a select field with the invoice status selected' do
             visit admin_invoice_path(invoice)
-            save_and_open_page
             expect(page).to have_select("invoice_status", selected: invoice.status.capitalize)
         end        
     
