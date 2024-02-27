@@ -72,7 +72,8 @@ RSpec.describe 'Admin invoice show page' do
         let(:invoice) { FactoryBot.create(:invoice) }
     
         it 'has a select field with the invoice status selected' do
-            visit "/admin/invoices/#{invoice.id}"
+            visit admin_invoice_path(invoice)
+            save_and_open_page
             expect(page).to have_select("invoice_status", selected: invoice.status.capitalize)
         end        
     

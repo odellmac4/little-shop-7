@@ -7,7 +7,7 @@
 
 <%= form_with url: admin_invoice_path(@invoice), method: :patch do |f| %>
     <%= f.label :invoice_status %>
-    <%= f.select :status, [["In Progress", "in progress"], ["Cancelled", "cancelled"], ["Completed", "completed"]], selected: @invoice.status, id: 'invoice_status' %>
+    <%= f.select :status, [["In Progress", "in_progress"], ["Cancelled", "cancelled"], ["Completed", "completed"]], selected: @invoice.status, id: 'invoice_status' %>
     <%= f.submit "Update Invoice Status" %>
 <% end %>
 
