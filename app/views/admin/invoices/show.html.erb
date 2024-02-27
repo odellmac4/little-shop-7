@@ -5,11 +5,10 @@
 <p>Invoice customer name: <%=@invoice.customer.first_name%> <%=@invoice.customer.last_name%></p>
 <p>Change Invoice status:</p>
 
-<%= form_for @invoice, url: admin_invoice_path(@invoice), method: :patch do |f| %>
-        <%= f.label :status %>
-        <%= f.select :status, Invoice.statuses.keys.map { |status| [status.humanize, status] }, selected: @invoice.status %>
-
-        <%= f.submit "Update Invoice Status" %>
+<%= form_with url: admin_invoice_path(@invoice), method: :patch do |f| %>
+    <%= f.label :invoice_status %>
+    <%= f.select :status, [["In Progress", "in progress"], ["Cancelled", "cancelled"], ["Completed", "completed"]], selected: @invoice.status, id: 'invoice_status' %>
+    <%= f.submit "Update Invoice Status" %>
 <% end %>
 
 

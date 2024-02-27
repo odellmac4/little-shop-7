@@ -70,26 +70,27 @@ RSpec.describe 'Admin invoice show page' do
 
     describe 'User story 36' do
         let(:invoice) { FactoryBot.create(:invoice) }
-
+    
         it 'has a select field with the invoice status selected' do
-            visit admin_invoice_path(invoice)
-            expect(page).to have_select('invoice_status', selected: invoice.status)
-        end
-
+            visit "/admin/invoices/#{invoice.id}"
+            expect(page).to have_select("invoice_status", selected: invoice.status.capitalize)
+        end        
+    
         it 'select field changes inv status and has button to update' do
             visit admin_invoice_path(invoice)
-            new_status = 'completed'
-            select new_status, from: 'invoice_status'
+            new_status = 'Completed'
+            select new_status, from: "invoice_status"
             click_button 'Update Invoice Status'
-            expect(page).to have_select('invoice_status', selected: new_status)
+            expect(page).to have_select("invoice_status", selected: new_status.capitalize)
         end
-
+    
         it 'redirects to admin inv show page' do
             visit admin_invoice_path(invoice)
-            new_status = 'completed'
+            new_status = 'Completed'
             select new_status, from: 'invoice_status'
             click_button 'Update Invoice Status'
             expect(page).to have_current_path(admin_invoice_path(invoice))
         end
     end
+    
 end
