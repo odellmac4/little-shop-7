@@ -67,4 +67,18 @@ RSpec.describe 'Admin invoice show page' do
             expect(page).to have_content("Total Revenue: $180.00")
         end       
     end
+
+    describe 'User story 36' do
+        it 'has a select field with the invoice status selected' do
+
+        end
+
+        it 'select field changes inv status and has button to update' do
+
+        end
+
+        it 'redirects to admin inv show page' do
+            
+        end
+    end
 end

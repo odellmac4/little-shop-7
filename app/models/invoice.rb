@@ -23,4 +23,14 @@ class Invoice < ApplicationRecord
   def total_revenue
     invoice_items.sum('unit_price * quantity')
   end
+
+  def update_status(new_status)
+    updated_status = Invoice.statuses.key(new_status)
+    if updated_status.present?
+      self.status = updated_status
+      save
+    else
+      false
+    end
+  end  
 end

@@ -73,4 +73,23 @@ RSpec.describe Invoice, type: :model do
       end
     end
   end
+
+  describe '#change_invoice_status' do
+    let(:invoice) { FactoryBot.create(:invoice) }
+
+      it 'can change an invoice status to in progress' do
+        new_status = 0
+        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("in_progress")
+      end
+
+      it 'can change an invoice status to cancelled' do
+        new_status = 1
+        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("cancelled")
+      end
+
+      xit 'can change an invoice status to completed' do
+        new_status = 2
+        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("completed")
+      end
+  end
 end

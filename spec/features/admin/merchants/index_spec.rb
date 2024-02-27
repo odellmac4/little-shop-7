@@ -38,7 +38,7 @@ RSpec.describe 'Admin merchants index' do
 
     describe 'User story 31' do
         it 'displays top 5 merchants by revenue with date for most merchant' do
-            
+            # code
         end
     end
 end

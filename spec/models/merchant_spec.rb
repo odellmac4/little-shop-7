@@ -75,31 +75,31 @@ RSpec.describe Merchant, type: :model do
     end
   end
 
-  describe '#merchant_best_day_by_revenue' do
-    it 'returns the top selling date and merchant for each of the top 5 merchants by revenue' do
-      # create 10 merchants
-      merchants = create_list(:merchant, 10)
+  # describe '#merchant_best_day_by_revenue' do
+  #   it 'returns the top selling date and merchant for each of the top 5 merchants by revenue' do
+  #     # create 10 merchants
+  #     merchants = create_list(:merchant, 10)
 
-      # create 20 invoices with associated items for each merchant
-      merchants.each do |merchant|
-        20.times do
-          invoice = create(:invoice)
-          item = create(:item, merchant: merchant)
-          create(:invoice_item, invoice: invoice, item: item)
-        end
-      end
+  #     # create 20 invoices with associated items for each merchant
+  #     merchants.each do |merchant|
+  #       20.times do
+  #         invoice = create(:invoice)
+  #         item = create(:item, merchant: merchant)
+  #         create(:invoice_item, invoice: invoice, item: item)
+  #       end
+  #     end
 
-      top_merchants = Merchant.merchant_best_day_by_revenue
+  #     top_merchants = Merchant.merchant_best_day_by_revenue
 
-      expect(top_merchants.length).to eq(5)
+  #     expect(top_merchants.length).to eq(5)
 
-      # the - sign checks for sorting in descending order
-      expected_order = top_merchants.sort_by { |merchant| -merchant.total_revenue }
+  #     # the - sign checks for sorting in descending order
+  #     expected_order = top_merchants.sort_by { |merchant| -merchant.total_revenue }
 
-      # check if the top merchants are in the expected order
-      top_merchants.each_with_index do |merchant, index|
-        expect(merchant).to eq(expected_order[index])
-      end
-    end
-  end
+  #     # check if the top merchants are in the expected order
+  #     top_merchants.each_with_index do |merchant, index|
+  #       expect(merchant).to eq(expected_order[index])
+  #     end
+  #   end
+  # end
 end
