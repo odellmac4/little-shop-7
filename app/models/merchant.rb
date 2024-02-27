@@ -62,4 +62,12 @@ class Merchant < ApplicationRecord
     @merchant.status == 1
   end
 
+  # admin
+  def self.merchant_best_day_by_revenue
+    top_merchants = Merchant.select("merchants.name AS merchant_name, invoices.created_at AS top_selling_date")
+                        .joins(items: [:invoice_items, :invoices])
+                        .group("merchants.id, invoices.created_at")
+                        .order("SUM(invoice_items.quantity * invoice_items.unit_price) DESC")
+                        .limit(5)
+  end
 end
