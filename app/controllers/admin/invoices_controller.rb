@@ -10,7 +10,7 @@ class Admin::InvoicesController < ApplicationController
 
     def update
         @invoice = Invoice.find(params[:id])
-        new_status = params[:invoice][:status].to_i
+        new_status = params[:invoice][:status]
         if @invoice.update_status(new_status)
             redirect_to admin_invoice_path(@invoice)
         end

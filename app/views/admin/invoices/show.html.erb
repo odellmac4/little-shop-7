@@ -3,6 +3,14 @@
 <p>Invoice status: <%=@invoice.status%></p>
 <p>Invoice created date: <%=format_created_at(@invoice.created_at)%></p>
 <p>Invoice customer name: <%=@invoice.customer.first_name%> <%=@invoice.customer.last_name%></p>
+<p>Change Invoice status:</p>
+
+<%= form_for @invoice, url: admin_invoice_path(@invoice), method: :patch do |f| %>
+        <%= f.label :status %>
+        <%= f.select :status, Invoice.statuses.keys.map { |status| [status.humanize, status] }, selected: @invoice.status %>
+
+        <%= f.submit "Update Invoice Status" %>
+<% end %>
 
 
 <h3>Total Revenue: <%=number_to_currency(@invoice.total_revenue)%></h3>
