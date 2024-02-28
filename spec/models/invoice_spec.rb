@@ -78,18 +78,11 @@ RSpec.describe Invoice, type: :model do
     let(:invoice) { FactoryBot.create(:invoice) }
 
       it 'can change an invoice status to in progress' do
-        new_status = 0
-        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("in_progress")
-      end
+        new_status_1 = 0
+        new_status_2 = 1
 
-      it 'can change an invoice status to cancelled' do
-        new_status = 1
-        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("cancelled")
-      end
-
-      xit 'can change an invoice status to completed' do
-        new_status = 2
-        expect { invoice.update_status(new_status) }.to change { invoice.status }.to("completed")
+        expect { invoice.update_status(new_status_1) }.to change { invoice.status }.to("in_progress")
+        expect { invoice.update_status(new_status_2) }.to change { invoice.status }.to("cancelled")
       end
   end
 end
