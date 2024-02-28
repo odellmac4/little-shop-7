@@ -1,4 +1,20 @@
-# Little Esty Shop
+# Little Esty Shop Application
+
+README should include a basic description of the project, a summary of the work completed, and some ideas for a potential contributor to work on/refactor next. Also include the names and GitHub links of all student contributors on your project. 
+
+## Group Members
+
+- [Odell](https://github.com/odellmac4)
+- [Hoa](https://github.com/hoadam)
+- [Faisal](https://github.com/mfaisalnazari)
+- [Nico](https://github.com/NicoShanstrom)
+- [Mel](https://github.com/mel-langhoff)
+
+## Overview
+
+This project creates a website of merchants, invoices, items, and customers. The application analyzes the data and performs CRUD actions through either a user or admin user. 
+
+<!-- # Little Esty Shop
 
 ## Background and Description
 
@@ -38,4 +54,4 @@
 1. [Database Setup](./doc/db_setup.md)
 1. [User Stories](./doc/user_stories.md)
 1. [Extensions](./doc/extensions.md)
-1. [Evaluation](./doc/evaluation.md)
+1. [Evaluation](./doc/evaluation.md) -->
