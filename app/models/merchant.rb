@@ -45,13 +45,14 @@ class Merchant < ApplicationRecord
         .limit(5)
   end
 
-  def self.merchant_best_day_by_revenue
-    top_merchants = Merchant.select("merchants.name AS merchant_name, MAX(invoices.created_at) AS top_selling_date")
-                            .joins(items: [:invoice_items, :invoices])
-                            .group("merchants.id")
-                            # Arel.sql() is used to safely inject a raw SQL fragment
-                            .order(Arel.sql("SUM(invoice_items.quantity * invoice_items.unit_price) DESC"))
-                            .limit(5)
-  end
-  
+  # US 31
+  # doesn't work
+  # def self.top_selling_merchants_by_date
+  #   joins(invoices: :transactions)
+  #     .where(transactions: { result: 'success' })
+  #     .group('merchants.id', 'invoices.created_at')
+  #     .select('merchants.*, COUNT(invoices.id) AS invoice_count, MAX(invoices.created_at) AS best_day')
+  #     .order('invoice_count DESC, best_day DESC')
+  #     .limit(5)
+  # end  
 end

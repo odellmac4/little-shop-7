@@ -30,6 +30,7 @@ RSpec.describe Merchant, type: :model do
         invoice.save!
       end
     end
+
     it "returns the top 5 customers with their success transactions counts in descending order" do
       expect(merchant.top_customers).to match_array(top_customers)
     end
@@ -75,31 +76,26 @@ RSpec.describe Merchant, type: :model do
     end
   end
 
-  # describe '#merchant_best_day_by_revenue' do
-  #   it 'returns the top selling date and merchant for each of the top 5 merchants by revenue' do
-  #     # create 10 merchants
-  #     merchants = create_list(:merchant, 10)
+  # describe 'User story 31' do
+  #   let(:customer) { create(:customer) }
+
+  #   it "#top_selling_merchants_by_date" do
+  #     create_list(:merchant, 10)
+  #     customer = create(:customer)
+  #     merchants = Merchant.all
 
   #     # create 20 invoices with associated items for each merchant
   #     merchants.each do |merchant|
   #       20.times do
-  #         invoice = create(:invoice)
+  #         invoice = create(:invoice, customer: customer)
   #         item = create(:item, merchant: merchant)
   #         create(:invoice_item, invoice: invoice, item: item)
   #       end
   #     end
 
-  #     top_merchants = Merchant.merchant_best_day_by_revenue
+  #     top_merchants = Merchant.top_selling_merchants_by_date
 
-  #     expect(top_merchants.length).to eq(5)
-
-  #     # the - sign checks for sorting in descending order
-  #     expected_order = top_merchants.sort_by { |merchant| -merchant.total_revenue }
-
-  #     # check if the top merchants are in the expected order
-  #     top_merchants.each_with_index do |merchant, index|
-  #       expect(merchant).to eq(expected_order[index])
-  #     end
+  #     expect(top_merchants.size).to eq(5)
   #   end
   # end
 end
