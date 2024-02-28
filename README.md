@@ -1,6 +1,6 @@
-# Little Esty Shop Application
+<!-- README should include a basic description of the project, a summary of the work completed, and some ideas for a potential contributor to work on/refactor next. Also include the names and GitHub links of all student contributors on your project.  -->
 
-README should include a basic description of the project, a summary of the work completed, and some ideas for a potential contributor to work on/refactor next. Also include the names and GitHub links of all student contributors on your project. 
+# Little Esty Shop Application
 
 ## Group Members
 
@@ -12,7 +12,7 @@ README should include a basic description of the project, a summary of the work 
 
 ## Overview
 
-This project creates a website of merchants, invoices, items, and customers. The application analyzes the data and performs CRUD actions through either a user or admin user. 
+This project creates a website using a databasse with merchants, invoices, items, and customers. The application analyzes the data and performs CRUD actions through either a user or admin user. The work was completed both async and in groups or partners.
 
 <!-- # Little Esty Shop
 
