@@ -48,4 +48,21 @@ RSpec.describe 'Bulk Discounts Index Page' do
       expect(page).to have_link("Create a new discount", href: "/merchants/#{merchant.id}/bulk_discounts/new")
     end
   end
+
+  describe 'user story 3' do
+    it 'has a button to delete a discount' do
+      visit "/merchants/#{merchant.id}/bulk_discounts"
+
+      expect(page).to have_button('Delete Discount')
+    end
+
+    it 'can delete a discount and redirect to discount index page without deleted discount' do
+      visit "/merchants/#{merchant.id}/bulk_discounts"
+
+      find("#discount_#{bulk_discount_1.id} .delete-discount-button").click
+
+      expect(page).to_not have_content(bulk_discount_1.percentage_discount)
+      expect(page).to_not have_content(bulk_discount_1.quantity_threshold)
+    end
+  end
 end

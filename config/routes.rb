@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:show, :edit, :update, :new, :create]
     resources :invoices, only: [:index, :show]
     resources :invoice_items, only: [:update]
-    resources :bulk_discounts, only: [:index, :show, :new, :create]
+    resources :bulk_discounts, only: [:index, :show, :new, :create, :delete]
   end
 
   namespace :admin do
