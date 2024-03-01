@@ -1,0 +1,3 @@
+class BulkDiscountsItemsController < ApplicationController
+
+end
