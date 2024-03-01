@@ -1,6 +1,6 @@
 # Bulk Discounts User Stories
 
-1: Merchant Bulk Discounts Index
+1: Merchant Bulk Discounts Index X
 
 As a merchant
 When I visit my merchant dashboard
@@ -31,7 +31,7 @@ When I click this button
 Then I am redirected back to the bulk discounts index page
 And I no longer see the discount listed
 
-4: Merchant Bulk Discount Show
+4: Merchant Bulk Discount Show X
 
 As a merchant
 When I visit my bulk discount show page

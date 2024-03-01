@@ -40,9 +40,17 @@ RSpec.describe 'Bulk Discounts Index Page' do
     it 'has a link to each discounts show page' do
       visit merchant_bulk_discounts_path(merchant)
 
-      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(@merchant, bulk_discount_1))
-      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(@merchant, bulk_discount_2))
-      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(@merchant, bulk_discount_3))
+      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(merchant, bulk_discount_1))
+      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(merchant, bulk_discount_2))
+      expect(page).to have_link('View Discount', href: merchant_bulk_discount_path(merchant, bulk_discount_3))
+    end
+  end
+
+  describe 'user story 2' do
+    it 'has a link to create a new discount' do
+      visit merchant_bulk_discount_path(merchant)
+
+      expect(page).to have_link("Create a new discount", merchant_bulk_discounts_path(merchant, bulk_discount))
     end
   end
 end
