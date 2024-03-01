@@ -25,7 +25,7 @@ RSpec.describe 'Bulk Discounts Show Page' do
     it 'has a link to edit the discount' do
       visit "/merchants/#{merchant.id}/bulk_discounts/#{bulk_discount_1.id}"
       
-      expect(page).to have_link('Edit Discount', href: edit_merchant_bulk_discount_path(merchant, bulk_discount_1))
+      expect(page).to have_link('Edit Discount', href: "/merchants/#{merchant.id}/bulk_discounts/#{bulk_discount_1.id}/edit")
     end
   end
 end
