@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Bulk Discounts Index Page' do
-  let(:merchant) { FactoryBot.create(:merchant) }
+  describe 'BD user story 1' do
+    let(:merchant) { FactoryBot.create(:merchant) }
   
   let!(:bulk_discount_1) { FactoryBot.create(:bulk_discount, merchant: merchant) }
   let!(:bulk_discount_2) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
   let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
 
-  describe 'BD user story 1' do
     it 'displays all bulk discounts for merchant' do
       visit merchant_bulk_discounts_path(merchant)
 
@@ -42,6 +42,12 @@ RSpec.describe 'Bulk Discounts Index Page' do
   end
 
   describe 'user story 2' do
+  let(:merchant) { FactoryBot.create(:merchant) }
+  
+  let!(:bulk_discount_1) { FactoryBot.create(:bulk_discount, merchant: merchant) }
+  let!(:bulk_discount_2) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
+  let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
+
     it 'has a link to create a new discount' do
       visit "/merchants/#{merchant.id}/bulk_discounts"
 
@@ -50,6 +56,10 @@ RSpec.describe 'Bulk Discounts Index Page' do
   end
 
   describe 'user story 3' do
+    let(:merchant) { FactoryBot.create(:merchant) }
+  
+  let!(:bulk_discount_1) { FactoryBot.create(:bulk_discount, merchant: merchant) }
+
     it 'has a button to delete a discount' do
       visit "/merchants/#{merchant.id}/bulk_discounts"
 
@@ -59,7 +69,7 @@ RSpec.describe 'Bulk Discounts Index Page' do
     it 'can delete a discount and redirect to discount index page without deleted discount' do
       visit "/merchants/#{merchant.id}/bulk_discounts"
 
-      find("#discount_#{bulk_discount_1.id} .delete-discount-button").click
+      click_on 'Delete Discount'
 
       expect(page).to_not have_content(bulk_discount_1.percentage_discount)
       expect(page).to_not have_content(bulk_discount_1.quantity_threshold)
