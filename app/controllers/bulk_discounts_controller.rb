@@ -27,6 +27,9 @@ def destroy
   redirect_to "/merchants/#{@merchant.id}/bulk_discounts"
 end
 
+def update
+end
+
 private
 
 def discount_params
