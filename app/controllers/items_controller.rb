@@ -41,11 +41,14 @@ class ItemsController < ApplicationController
       redirect_to merchant_items_path(merchant_id: @merchant.id)
     end
 
-
   private
 
   def item_params
-    params.permit(:name, :description, :unit_price, :merchant_id)
-   end
+    params.permit(:name, 
+                  :description, 
+                  :unit_price, 
+                  :merchant_id, 
+                  :has_discount)
+  end
 
   end
