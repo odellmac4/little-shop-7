@@ -10,6 +10,6 @@ class MerchantBulkDiscountsController < ApplicationController
     end
 
     def new
-
+        
     end
 end

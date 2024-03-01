@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Bulk Discounts Show Page' do
   let(:merchant) { FactoryBot.create(:merchant) }
 
+  let!(:item1) { FactoryBot.create(:item, merchant: merchant) }
+  let!(:item2) { FactoryBot.create(:item, merchant: merchant) }
+  let!(:item3) { FactoryBot.create(:item, merchant: merchant) }
+  
   let!(:bulk_discount_1) { FactoryBot.create(:bulk_discount, merchant: merchant) }
   let!(:bulk_discount_2) { FactoryBot.create(:bulk_discount, merchant: merchant) }
   let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount, merchant: merchant) }
