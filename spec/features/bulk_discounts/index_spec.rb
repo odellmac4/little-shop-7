@@ -41,7 +41,7 @@ RSpec.describe 'Bulk Discounts Index Page' do
     end
   end
 
-  xdescribe 'user story 2' do
+  describe 'user story 2' do
     it 'has a link to create a new discount' do
       visit merchant_bulk_discount_path(merchant)
 

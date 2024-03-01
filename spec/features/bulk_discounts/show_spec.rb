@@ -12,7 +12,7 @@ RSpec.describe 'Bulk Discounts Show Page' do
   let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount, merchant: merchant) }
 
   # BD US 2
-  xit 'shows quantity threshold and percentage discount for the discount' do
+  it 'shows quantity threshold and percentage discount for the discount' do
     visit merchant_bulk_discounts_path(merchant, bulk_discount_1)
 
     expect(page).to have_content(bulk_discount_1.quantity_threshold)
