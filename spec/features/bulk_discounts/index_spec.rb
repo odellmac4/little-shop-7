@@ -7,7 +7,7 @@ RSpec.describe 'Bulk Discounts Index Page' do
   let!(:bulk_discount_2) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
   let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount,  merchant: merchant) }
 
-  xdescribe 'BD user story 1' do
+  describe 'BD user story 1' do
     it 'displays all bulk discounts for merchant' do
       visit merchant_bulk_discounts_path(merchant)
 

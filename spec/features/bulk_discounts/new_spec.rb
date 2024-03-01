@@ -21,7 +21,7 @@ RSpec.describe 'Bulk Discount New Page' do
     it 'requires [blahblahblah] data' do
       visit new_merchant_bulk_discount_path(merchant)
 
-
+      expect(page).to have_content(bulk_discount_3.percentage_discount)
     end
 
     it 'can create a new discount' do
@@ -33,7 +33,7 @@ RSpec.describe 'Bulk Discount New Page' do
     it 'can redirect to the bulk discount index with the new discount added' do
       visit new_merchant_bulk_discount_path(merchant)
 
-      
+
     end
   end
 end
