@@ -24,7 +24,6 @@ RSpec.describe 'Merchant Dashboard Show Page' do
 
       first(:button, "Enable").click
 
-      save_and_open_page
       expect(page).to have_button("Disable")
 
 

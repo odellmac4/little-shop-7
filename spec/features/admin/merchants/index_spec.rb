@@ -64,7 +64,7 @@ RSpec.describe 'Admin merchants index' do
             nico = Merchant.create!(name: "Nico", status: 1)
 
             visit admin_merchants_path
-            # save_and_open_page
+
             within "#disabled" do
                 expect(page).to have_content("Odell")
             end
