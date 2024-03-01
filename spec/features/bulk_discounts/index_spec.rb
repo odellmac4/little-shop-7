@@ -43,9 +43,9 @@ RSpec.describe 'Bulk Discounts Index Page' do
 
   describe 'user story 2' do
     it 'has a link to create a new discount' do
-      visit "/merchants/#{merchant.id}/bulk_discounts/index.html"
+      visit "/merchants/#{merchant.id}/bulk_discounts"
 
-      expect(page).to have_link("Create a new discount", "/merchants/#{merchant.id}/bulk_discounts/new")
+      expect(page).to have_link("Create a new discount", href: "/merchants/#{merchant.id}/bulk_discounts/new")
     end
   end
 end

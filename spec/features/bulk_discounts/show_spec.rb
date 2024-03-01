@@ -13,7 +13,7 @@ RSpec.describe 'Bulk Discounts Show Page' do
 
   # BD US 2
   it 'shows quantity threshold and percentage discount for the discount' do
-    visit merchant_bulk_discounts_path(merchant, bulk_discount_1)
+    visit "/merchants/#{merchant.id}/bulk_discounts/#{bulk_discount_1.id}"
 
     expect(page).to have_content(bulk_discount_1.quantity_threshold)
     expect(page).to have_content(bulk_discount_1.percentage_discount)
