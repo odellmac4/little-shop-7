@@ -18,7 +18,7 @@ end
 def create
     @merchant = Merchant.find(params[:merchant_id])
     @discount = @merchant.bulk_discounts.create!(discount_params)
-    redirect_to merchant_discounts_path(@merchant)
+    redirect_to merchant_bulk_discounts_path(@merchant)
 end
 
 private

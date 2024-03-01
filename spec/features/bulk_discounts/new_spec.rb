@@ -11,29 +11,25 @@ RSpec.describe 'Bulk Discount New Page' do
   let!(:bulk_discount_2) { FactoryBot.create(:bulk_discount, merchant: merchant) }
   let!(:bulk_discount_3) { FactoryBot.create(:bulk_discount, merchant: merchant) }
 
-  xdescribe 'user story 2' do
+  describe 'user story 2' do
     it 'has a form to create new discounts' do
-      visit new_merchant_bulk_discount_path(merchant)
+      visit new_merchant_bulk_discount_path(merchant.id)
 
-
+      expect(page).to have_field('Discount Percent')
+      expect(page).to have_field('Quantity Threshold')
+      expect(page).to have_button('Create Discount')
     end
 
-    it 'requires [blahblahblah] data' do
-      visit new_merchant_bulk_discount_path(merchant)
+    it 'can create a new discount and redirect to the bulk discount index with the new discount added' do
+      visit new_merchant_bulk_discount_path(merchant.id)
 
-      expect(page).to have_content(bulk_discount_3.percentage_discount)
-    end
+      fill_in 'Discount Percent', with: '50'
+      fill_in 'Quantity Threshold', with: '25'
+      click_on 'Create Discount'
 
-    it 'can create a new discount' do
-      visit new_merchant_bulk_discount_path(merchant)
-
-
-    end
-
-    it 'can redirect to the bulk discount index with the new discount added' do
-      visit new_merchant_bulk_discount_path(merchant)
-
-
+      expect(page).to have_current_path("/merchants/#{merchant.id}/bulk_discounts")
+      expect(page).to have_content("25")
+      expect(page).to have_content("50")
     end
   end
 end
