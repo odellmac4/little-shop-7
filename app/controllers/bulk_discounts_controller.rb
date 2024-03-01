@@ -28,6 +28,9 @@ def destroy
 end
 
 def update
+    @merchant = Merchant.find(params[:merchant_id])
+    @discounts = @merchant.bulk_discounts
+    @discount = @discounts.find(params[:id])
 end
 
 private

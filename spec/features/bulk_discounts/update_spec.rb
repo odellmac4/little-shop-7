@@ -1,17 +1,21 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.descirbe 'Bulk Discounts Update Page' do
-#   describe 'user story 5' do
-#     it 'has a form to edit the discount' do
+RSpec.describe 'Bulk Discounts Update Page' do
+  let(:merchant) { FactoryBot.create(:merchant) }
+
+  let!(:bulk_discount_1) { FactoryBot.create(:bulk_discount, merchant: merchant) }
+
+  xdescribe 'user story 5' do
+    it 'has a form to edit the discount' do
     
-#     end
+    end
 
-#     it 'displays the current attributes of the discount pre-populated in the form' do
+    it 'displays the current attributes of the discount pre-populated in the form' do
 
-#     end
+    end
 
-#     it 'can change the information about the discount and redirect to show page' do
+    it 'can change the information about the discount and redirect to show page' do
 
-#     end
-#   end
-# end
+    end
+  end
+end
