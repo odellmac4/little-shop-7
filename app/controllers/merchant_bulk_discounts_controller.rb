@@ -1,0 +1,3 @@
+class MerchantBulkDiscountsController < ApplicationController
+    
+end
