@@ -43,6 +43,13 @@ RSpec.describe 'Merchants Dashboard Show Page' do
           expect(page).to have_content("#{top_customer.first_name} #{top_customer.last_name} #{top_customer.transactions.count}")
         end
       end
+
+      # BD US 1
+      it 'shows a link to all a merchants bulk discounts' do
+        visit merchant_dashboard_path(merchant)
+
+        expect(page).to have_link('View all bulk discounts', href: '/merchants/:merchant_id/bulk_discounts')
+      end
     end
 
     describe "User Story 4-5" do
