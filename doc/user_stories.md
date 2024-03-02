@@ -37,7 +37,7 @@ As a merchant
 When I visit my bulk discount show page
 Then I see the bulk discount's quantity threshold and percentage discount
 
-[ ] 5: Merchant Bulk Discount Edit
+[X] 5: Merchant Bulk Discount Edit
 
 As a merchant
 When I visit my bulk discount show page

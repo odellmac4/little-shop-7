@@ -68,5 +68,13 @@ RSpec.describe 'Merchant Invoice Show Page' do
         expect(page).to have_content("Item #{item_1.name} is updated successfully")
       end
     end
+
+    describe 'bulk discounts user story 6' do
+      it 'shows total discounted revenue' do
+        visit merchant_invoice_path(merchant, invoice)
+
+        expect(page).to have_content(whatever the content is)
+      end
+    end
   end
 end
