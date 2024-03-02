@@ -1,11 +1,11 @@
 <h1>Edit Discount</h1>
 
-<%= form_with url: "/merchants/#{@merchant.id}/bulk_discounts/#{@discount.id}", method: :patch, local: true do |form| %>
-  <%= form.label :percentage_discount %>
-  <%= form.text_field :percentage_discount %>
+<%= form_with url: "/merchants/#{@merchant.id}/bulk_discounts/#{@discount.id}", method: :patch, local: true, data: { turbo: false } do |form| %>
+  <%= form.label :percentage_discount, "Percentage Discount" %>
+  <%= form.text_field :percentage_discount, value: @discount.percentage_discount %>
+  <br>
+  <%= form.label :quantity_threshold, "Quantity Threshold" %>
+  <%= form.text_field :quantity_threshold, value: @discount.quantity_threshold %>
 
-  <%= form.label :quantity_threshold%>
-  <%= form.text_field :quantity_threshold%>
-  
   <%= form.submit 'Update Discount' %>
 <% end %>
