@@ -9,11 +9,13 @@ class InvoiceItem < ApplicationRecord
   }
 
   def discounted_unit_price
-    # float (percentage)
-    bulk_discount = item.bulk_discounts.find_by(quantity)
+    bulk_discount = item.bulk_discounts.find_by(quantity) # float
 
     if quantity >= item.bulk_discounts.quantity_threshold
-      
+      # easy way to work with percentages!!!
+      unit_price * (1 - bulk_discount.percentage_discount) 
+    else
+      unit_price
     end
   end
 end
