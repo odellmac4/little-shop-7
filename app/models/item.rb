@@ -36,5 +36,4 @@ class Item < ApplicationRecord
                              formatted_date = top_selling_date.strftime("%Y-%m-%d")
   end
 
-
 end

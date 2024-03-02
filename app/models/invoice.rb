@@ -24,7 +24,11 @@ class Invoice < ApplicationRecord
     invoice_items.sum('unit_price * quantity')
   end
 
-  def blah
-    
+  def total_discounted_revenue
+    total_revenue - discount_amount
+  end
+
+  def discount_amount
+    invoice_items.something
   end
 end
