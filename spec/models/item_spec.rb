@@ -6,7 +6,14 @@ RSpec.describe Item, type: :model do
     it { should have_many(:invoice_items) }
     it { should have_many(:invoices).through(:invoice_items) }
     it { should have_many(:bulk_discount_items) }
-    it { should have_many(:bulk_discounts).through(:bulk_discount_items) }
+    it { should have_many(:bulk_discounts).through(:merchant) }
+  end
+
+  describe "default values" do
+    it "sets has_discount to false by default" do
+      item = Item.new
+      expect(item.has_discount).to be false
+    end
   end
 
   describe "validations" do

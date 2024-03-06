@@ -8,14 +8,27 @@ class InvoiceItem < ApplicationRecord
     shipped: 2
   }
 
-  def discounted_unit_price
-    bulk_discount = item.bulk_discounts.find_by(quantity) # float
+  def total_price
+    quantity * unit_price
+  end
 
-    if quantity >= item.bulk_discounts.quantity_threshold
-      # easy way to work with percentages!!!
-      unit_price * (1 - bulk_discount.percentage_discount) 
+  def discounted_unit_price
+    require 'pry'; binding.pry
+
+    if top_discount.present?
+       discounted_price = unit_price * (1 - top_discount.percentage_discount)
+       discounted_price.round(2)
     else
-      unit_price
+       unit_price
     end
+  end
+
+  def top_discount
+    BulkDiscount
+                .joins(:items)
+                .select("bulk_discounts.*")
+                .where("bulk_discounts.quantity_threshold <= ?", self.quantity)
+                .order("bulk_discounts.percentage_discount DESC")
+                .first
   end
 end
